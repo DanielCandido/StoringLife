@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Marcar Exame</title>
+</h:head>
+<body>
+	<div style="text-align: center;">
+		<h:graphicImage value="/View/Images/StoringLogo.png" style="width:1100px;height:200px ;"/>
+		<br /> <br />
+		<p:outputLabel value="MARCAR DOAÇÃO"
+			style="font-size:30px; min-width:2000px;min-height:2000px ;
+			border: 5px inset;" />
+	</div>
+	<h:form>
+		<p:panelGrid style="text-align: center;">
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<p:selectOneMenu id="hospdoacao" value="#{doadorBean.marcadoacao.hospDoacao}">
+				<f:selectItem itemLabel="Selecione Hospital" itemValue="null"/>
+				<f:selectItem itemLabel="Hospital de Clinicas do Parana" itemValue="79.797.979/7977-97"/>
+				<f:selectItem itemLabel="Banco de Sangue Erasto Gaetner" itemValue="15.156.113/2132-13"/>
+				<f:selectItem itemLabel="Hospital Evangélico" itemValue="79.123.123/1231-23"/>
+			</p:selectOneMenu>
+
+
+			<p:inputMask mask="999.999.999-99"
+				value="#{doadorBean.marcadoacao.idDoador}"
+				style="border:3px;margin-left:100px; " pt:placeholder="CPF DOADOR" />
+
+			<br />
+			<br />
+			<br />
+			<p:calendar id="datadoacao"
+				value="#{doadorBean.marcadoacao.dataDoacao}"
+				pt:placeholder="SELECIONE A DATA">
+			</p:calendar>
+			<br />
+			<br />
+
+			<p:commandButton id="CADASTRAREXAME" value="RESERVAR"
+				action="#{doadorBean.marcarDoacao()}" />
+		</p:panelGrid>
+	</h:form>
+</body>
+</html>

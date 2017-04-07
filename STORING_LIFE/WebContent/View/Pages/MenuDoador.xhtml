@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Menu Doador</title>
+</h:head>
+
+<body>
+	<div style="text-align: center;">
+		<h:graphicImage value="/View/Images/StoringLogo.png" style="width:1300px;height:200px ;" />
+		<br /> <br />
+		<p:outputLabel value="MENU DOADOR"
+			style="font-size:30px; min-width:2000px;min-height:2000px ;
+			border: 5px inset;" />
+	</div>
+	<h:form>
+		<p:panelGrid>
+		
+			<!-- 	<p:inputMask mask="999.999.999-99" pt:placeholder="CPF DOADOR"
+				style="border:3px;" value="#{doadorBean.doador.cpf}" />
+			<br />
+			<p:commandButton
+				action="#{doadorBean.doadorcontrole.exclirDoador(doadorBean.doador.cpf)}"
+				value="EXCLUIR"></p:commandButton>
+			<br />
+			<br />
+
+			<p:button href="/Pages/View/ListarDoadores.jsf" value="Listar Doadores">
+			</p:button> -->
+			<p:commandButton onclick="pontos()" value="Pontos de coleta" style="margin-left:20px;"></p:commandButton>
+			<p:commandButton onclick="inicio();" value="Inicio" style="margin-left:20px;">
+			</p:commandButton>
+			<p:commandButton onclick="marcar()" value="Reservar Horario"
+				style="margin-left:20px;">
+			</p:commandButton>
+			<p:commandButton action="#{doadorBean.fazerLogout()}" value="SAIR" style="float:right;"></p:commandButton>
+
+
+		</p:panelGrid>
+	</h:form>
+	<script type="text/javascript">
+			function pontos(){
+				window.location= '/STORING_LIFE/View/Pages/ListarHospitais.jsf';
+				}
+			function inicio(){
+				window.location = '/STORING_LIFE/View/HomePage.jsf';
+			}
+			
+			function marcar(){
+				window.location = '/STORING_LIFE/View/Pages/MarcarDoacao.jsf';
+			}
+			</script>
+
+
+</body>
+</html>

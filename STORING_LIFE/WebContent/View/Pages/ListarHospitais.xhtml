@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Pontos de Coleta</title>
+</h:head>
+
+<body>
+	<div style="text-align: center;">
+	<h:graphicImage value="/View/Images/StoringLogo.png" style="width:1300px;height:200px ;"/>
+		<br /> <br />
+		<p:outputLabel value="PONTOS DE COLETA"
+			style="font-size:30px; min-width:2000px;min-height:2000px ;
+			border: 5px inset;" />
+	</div>
+	<br />
+	<br />
+	<h:form>
+		<p:panelGrid>
+			<p:dataTable var="hospitais"
+				value="#{doadorBean.hospitalcontrole.listarHospitais()}">
+				<p:column headerText="RAZAO SOCIAL">
+					<h:outputText value="#{hospitais.razaoSocialHosp}" />
+				</p:column>
+				<p:column headerText="TELEFONE">
+					<h:outputText value="#{hospitais.telefoneHospital}" />
+				</p:column>
+				<p:column headerText="ENDEREÇO">
+					<h:outputText value="#{hospitais.enderecoHospital}" />
+				</p:column>
+				<p:column headerText="BAIRRO">
+					<h:outputText value="#{hospitais.bairroHospital}" />
+				</p:column>
+				<p:column headerText="CIDADE">
+					<h:outputText value="#{hospitais.cidadeHospital}" />
+				</p:column>
+				<p:column headerText="ESTADO">
+					<h:outputText value="#{hospitais.estadoHospital}" />
+				</p:column>
+
+			</p:dataTable>
+			<p:commandButton onclick="voltar()" value="VOLTAR"/>
+		</p:panelGrid>
+	</h:form>
+	<script type="text/javascript">
+			function voltar(){
+				window.location= '/STORING_LIFE/View/Pages/MenuDoador.jsf';
+				}
+			</script>
+
+</body>
+</html>

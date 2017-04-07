@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Cadastrar Hospitais</title>
+</h:head>
+<body bgcolor="white">
+	<div style="text-align: center;">
+		<p:outputLabel value="Storing Life"
+			style="font-size:50px; min-width:5000px;min-height:2000px ;
+			border: 5px inset;" />
+		<br /> <br />
+		<p:outputLabel value="CADASTRO HOSPITAL"
+			style="font-size:30px; min-width:2000px;min-height:2000px ;
+			border: 5px inset;" />
+	</div>
+	<h:form>
+	<br />
+	
+		<p:panelGrid>
+		
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<p:inputText id="razao"
+				value="#{doadorBean.hospital.razaoSocialHosp}"
+				pt:placeholder="RAZÃO SOCIAL" style="border: 3px;">
+			</p:inputText>
+			<p:inputText id="fantasia"
+				value="#{doadorBean.hospital.nomeHospital}"
+				pt:placeholder="NOME FANTASIA" style="margin-left:300px;border:3px;">
+			</p:inputText>
+			<br />
+			<br />
+			<p:inputMask mask="99.999.999/9999-99" id="cnpj"
+				value="#{doadorBean.hospital.cnpjHospital}" pt:placeholder="CNPJ"
+				style="border:3px;">
+			</p:inputMask>
+			<p:inputMask mask="(99)9999-9999" id="telefone"
+				value="#{doadorBean.hospital.telefoneHospital}"
+				pt:placeholder="TELEFONE" style="border:3px;margin-left:300px;">
+			</p:inputMask>
+
+			<br />
+			<br />
+			<p:inputText id="email" value="#{doadorBean.hospital.emailHospital}"
+				pt:placeholder="EMAIL" style="border:3px;">
+			</p:inputText>
+			<p:inputText id="endereco"
+				value="#{doadorBean.hospital.enderecoHospital}"
+				pt:placeholder="ENDEREÇO" style="border:3px;margin-left:300px;">
+			</p:inputText>
+			<br />
+			<br />
+			<p:selectOneMenu id="estado"
+				value="#{doadorBean.hospital.estadoHospital}"
+				style="border:3px;width:190px;">
+				<f:selectItem itemLabel="ESTADO" itemValue="null"
+					noSelectionOption="Invalido" />
+				<f:selectItem itemLabel="PR" itemValue="PR"
+					action="#{doadorBean.hospital.estadoHospital}" />
+			</p:selectOneMenu>
+			<p:selectOneMenu id="cidade"
+				value="#{doadorBean.hospital.cidadeHospital}"
+				style="border:3px;margin-left:300px;width:190px;">
+				<f:selectItem itemLabel="CURITIBA"
+					itemValue="CURITIBA" action="#{doadorBean.hospital.cidadeHospital}" />
+				<f:selectItem itemLabel="CIDADE" itemValue="null" />
+			</p:selectOneMenu>
+			<br />
+			<br />
+			<p:inputText id="bairro"
+				value="#{doadorBean.hospital.bairroHospital}"
+				pt:placeholder="BAIRRO" style="border:3px;">
+			</p:inputText>
+			<p:inputMask mask="99.999-999" id="cep"
+				value="#{doadorBean.hospital.cepHospital}" pt:placeholder="CEP"
+				style="border-3px;margin-left:300px;">
+			</p:inputMask>
+			<br />
+			<br />
+			<p:password id="senha" value="#{doadorBean.hospital.senhaHospital}"
+				pt:placeholder="SENHA" style="border:3px;" />
+
+			<br />
+			<br />
+			<p:commandButton action="#{doadorBean.cadastrarHospital()}"
+				value="CADASTRAR" style="border:3px;">
+			</p:commandButton>
+			<p:button href="/View/Pages/SelecionaLogin.jsf" value="ENTRAR"
+				style="border:3px;margin-left:15px;" />
+			<p:button href="/View/HomePage.jsf" value="INICIO"
+				style="border:3px;margin-left:15px;" />
+		</p:panelGrid>
+	</h:form>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Menu Hospital</title>
+</h:head>
+<body>
+	<div style="text-align: center;">
+				<h:graphicImage value="/View/Images/StoringLogo.png" style="width:1100px;height:200px ;"/>
+		<br /> <br />
+		<p:outputLabel value="MENU HOSPITAL"
+			style="font-size:30px; min-width:2000px;min-height:2000px ;
+			border: 5px inset;" />
+
+		<h:form>
+			<p:messages id="messages" showDetail="false" autoUpdate="true"
+				closable="true" />
+			<br />
+			<br />
+			<br />
+			<br />
+		</h:form>
+	</div>
+	<h:form>
+		<p:panelGrid>
+			<p:inputMask mask="999.999.999-99" pt:placeholder="CPF DOADOR"
+				required="true" value="#{doadorBean.doador.cpf}" size="15"
+				validatorMessage="*Campo cpf é obrigatorio"
+				style="border:3px;width:190px;">
+				<f:validateRequired validatorMessage="*Campo cpf é obrigatorio" />
+			</p:inputMask>
+			<!-- <p:inputMask mask="999.999.999-99" pt:placeholder="CPF DOADOR"
+				required="true" size="15"
+				validatorMessage="*Campo cpf é obrigatorio"
+				value="#{doadorBean.doador.cpf}"
+				style="border:3px;width:190px;margin-left:50px;">
+				<f:validateRequired validatorMessage="*Campo cpf é obrigatorio" />
+			</p:inputMask> -->
+			<br />
+			<p:commandButton
+				action="#{doadorBean.doadorcontrole.exclirDoador(doadorBean.doador.cpf)}"
+				value="EXCLUIR DOADOR">
+				<p:confirm header="CONFIRMAR" message="Deseja Excluir?"
+					icon="ui-icon-alert" />
+			</p:commandButton>
+			<!-- <p:commandButton
+				action="#{doadorBean.doadorcontrole.listarDoador(doadorBean.doador.cpf)}"
+				value="PESQUISAR" style="margin-left:50px;">
+			</p:commandButton> -->
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="SIM" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="NAO" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
+			<p:commandButton onclick="listar()" value="LISTAR DOADORES"
+				style="margin-left:100px;">
+			</p:commandButton>
+			
+
+
+		</p:panelGrid>
+	</h:form>
+	<h:form>
+	<p:commandButton action="#{doadorBean.fazerLogoutHosp()}" value="SAIR" style="float:right;"/>
+	</h:form>
+	<script type="text/javascript">
+			function listar(){
+				window.location= '/STORING_LIFE/View/Pages/ListarDoadores.jsf';
+				}
+			</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<title>Cadastrar Doadores</title>
+	<link type="text/css" rel="stylesheet" href="../CSS/main.css" />
+</h:head>
+<body bgcolor="white">
+
+	<div style="text-align: center;">
+		<h:graphicImage value="/View/Images/StoringLogo.png" style="width:1300px;height:200px ;"/>
+		<br /> <br />
+		<p:outputLabel value="CADASTRO MEDICO"
+			style="font-size:30px; min-width:2000px;min-height:2000px ;
+			border: 5px inset;" />
+	</div>
+	<h:form>
+		<p:messages id="messages" showDetail="false" autoUpdate="true"
+			closable="true" />
+	</h:form>
+	<p:separator />
+	<h:form>
+	<p:panelGrid>
+
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<p:inputText  id="nome" value="#{doadorBean.medico.nomeMedico}"
+			pt:placeholder="NOME*" style="border:3px; width:318px;" required="false" 
+			size="80" validatorMessage="*Campo nome é obrigatorio">
+			<f:validateRequired validatorMessage="*Campo nome é obrigatorio"/>
+		</p:inputText>
+
+		<p:inputMask mask="99999999-9/BR" id="crm" pt:placeholder="CRM*"
+			required="false" validatorMessage="*Campo CRM é obrigatorio"
+			size="15"
+			value="#{doadorBean.medico.crmMedico}" 
+			style="margin-left:300px; border:3px; width:218px;">
+			<f:validateRequired validatorMessage="*Campo CRM é obrigatorio"/>
+		</p:inputMask>
+
+		<br />
+		<br />
+		<p:selectOneMenu id="hospdoacao" value="#{doadorBean.medico.hospAtuacao}" required="false"
+		validatorMessage="Campo hospital atuação obrigatorio">
+				<f:selectItem itemLabel="Selecione Hospital" itemValue="null"/>
+				<f:selectItem itemLabel="Hospital de Clinicas do Parana" itemValue="79.797.979/7977-97"/>
+				<f:selectItem itemLabel="Banco de Sangue Erasto Gaetner" itemValue="15.156.113/2132-13"/>
+				<f:selectItem itemLabel="Hospital Evangélico" itemValue="79.123.123/1231-23"/>
+			</p:selectOneMenu>
+		<p:password id="senha" value="#{doadorBean.medico.senhaMedico}" size="8"
+			pt:placeholder="SENHA" style=" margin-left: 300px;border: 3px;width:218px;">
+			</p:password>
+		<br />
+		<br />
+		<p:selectOneMenu id="dirmedico" value="#{doadorBean.medico.dirMedico}"
+			style="width:190px; border:3px;width:218px; " required="false"
+			validatorMessage="*Campo diretor é obrigatorio" size="4">
+			<f:selectItem itemLabel="*DIRETOR" itemValue="null" />
+			<f:selectItem itemLabel="SIM" itemValue="SIM"
+				action="#{doadorBean.medico.dirMedico}" />
+			<f:selectItem itemLabel="NAO" itemValue="NAO"
+				action="#{doadorBean.medico.dirMedico}"/>	
+			<f:validateRequired validatorMessage="*Campo diretor é obrigatorio"/>
+			</p:selectOneMenu>
+		<br />
+		<br />
+		<p:commandButton action="#{doadorBean.cadastrarMedico()}"
+			value="CADASTRAR" disable="#{doadorBean.statusCadastrar}" required="False"
+		
+			style="border:5px;" />
+		<p:button href="/View/HomePage.jsf" value="INICIO"
+			style="border:5px;margin-left:15px;" />
+		<p:button href="/View/Pages/CadastrarMedicos.jsf" value="LIMPAR"
+			style="border:5px;margin-left:15px;" />
+	
+
+
+	</p:panelGrid>
+	</h:form>
+	<script type="text/javascript">
+	function mascara(o,f){
+		v_obj=o
+		v_fun=f
+		setTimeout("execmascara()",1)
+		}
+		function execmascara(){
+		v_obj.value=v_fun(v_obj.value)
+		}
+		function soLetras(v){
+		return v.replace(/\d/g,"") //Remove tudo o que não é Letra
+		}
+		function soLetrasMA(v){
+		v=v.toUpperCase() //Maiúsculas
+		return v.replace(/\d/g,"") //Remove tudo o que não é Letra ->maiusculas
+		}
+		function soLetrasMI(v){
+		v=v.toLowerCase() //Minusculas
+		return v.replace(/\d/g,"") //Remove tudo o que não é Letra ->minusculas
+		}
+		function soNumeros(v){
+		return v.replace(/\D/g,"") //Remove tudo o que não é dígito
+		}
+	</script>
+		
+
+</body>
+
+</html>

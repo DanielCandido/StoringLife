@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+
+
+	<h:head>
+		<title>Pagina Inicial </title>
+	</h:head> 
+	<body bgcolor="white">
+		<div style="text-align: center;">
+		<h:graphicImage value="/View/Images/StoringLogo.png" style="width:1300px;height:200px ;"/>
+		<br></br>
+			<h:outputText value="INICIO" 
+			style="font-size:50px; min-width:500px;min-height:2000px ;
+			border: 5px inset;"/>	
+			<br/>
+			<br/>
+			<p:commandButton onclick ="cadastro()" value="CADASTRAR" 
+			style= "font-size: 15px; color :black;border:3px inset;"/> 
+			<p:commandButton action="SobreNos" value="SOBRE NÓS"
+			style= "font-size: 15px; color=:black; border:3px inset;" />
+			<p:commandButton onclick="login()" value="ENTRAR"
+			style= "font-size: 15px; color: black;border:3px inset;" />
+		</div>
+		
+		<script type="text/javascript">
+			
+			function cadastro(){
+				window.location = '/STORING_LIFE/View/Pages/CadastrarDoadores.jsf';
+			}
+			</script>
+			
+		<script type="text/javascript">
+			function login(){
+				window.location = 'Pages/SelecionaLogin.jsf';
+			}
+			</script>
+	</body> 
+</html>

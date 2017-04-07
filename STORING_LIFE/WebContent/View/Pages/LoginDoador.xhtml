@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Login Doador</title>
+</h:head>
+<body bgcolor="white">
+	<div style="text-align: center;">
+	<h:graphicImage value="/View/Images/StoringLogo.png" style="width:1100px;height:200px ;"/>
+	<br></br>
+		<h:outputLabel value="ENTRAR"
+			style="font-size:50px; min-width:5000px;min-height:2000px ;
+			border: 5px inset;" />
+	</div>
+	<h:form>
+		<p:messages id="messages" showDetail="false" autoUpdate="true"
+			closable="true" />
+
+		<p:panelGrid >
+			<br />
+			<br />
+			<p:inputMask mask="999.999.999-99" id="cpfusuario" required="false"
+				validatorMessage="Cpf invalido"
+				value="#{doadorBean.cpfLogin}" pt:placeholder="Login" style="border:3px">
+				<f:validateRequired validatorMessage="Cpf invalido"/>
+				</p:inputMask>
+			<br />
+			<br />
+			<p:password id="senhausuario" required="false"
+				validatorMessage="Senha invalida"
+				value="#{doadorBean.senhaLogin}" pt:placeholder="Senha" >
+				<f:validateRequired validatorMessage="Senha invalida"/>
+				</p:password>
+			<br />
+
+
+			<p:commandLink id="ircadastro" action="CadastrarDoadores"
+				value="Cadastre-se" />
+			<br />
+			<br />
+			<p:commandButton id="fazerlogin" action="#{doadorBean.fazerLogin()}"
+				value="Entrar" />
+				
+			<p:button href="/View/HomePage.jsf" value="INICIO"
+			style="border:5px;margin-left:15px;" />
+		</p:panelGrid>
+	</h:form>
+
+
+</body>
+</html>

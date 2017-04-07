@@ -1,0 +1,206 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastrar Doadores</title>
+	<link type="text/css" rel="stylesheet" href="../CSS/main.css" />
+</h:head>
+<body bgcolor="white">
+
+	<div style="text-align: center;">
+		<h:graphicImage value="/View/Images/StoringLogo.png"
+			style="width:1300px;height:200px ;" />
+		<br /> <br />
+		<p:outputLabel value="CADASTRO DOADOR"
+			style="font-size:30px; min-width:2000px;min-height:2000px ;
+			border: 5px inset;" />
+	</div>
+	<h:form>
+		<p:messages id="messages" showDetail="false" autoUpdate="true"
+			closable="true" />
+	</h:form>
+	<p:separator />
+	<h:form>
+		<p:panelGrid>
+
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<p:inputText id="nome" value="#{doadorBean.doador.nome}"
+				pt:placeholder="NOME*" style="border:3px; width:218px;"
+				required="false" size="80"
+				validatorMessage="*Campo nome é obrigatorio">
+				<f:validateRequired validatorMessage="*Campo nome é obrigatorio" />
+			</p:inputText>
+
+			<p:inputMask mask="999.999.999-99" id="cpf" pt:placeholder="CPF"
+				required="false" validatorMessage="*Campo CPF é obrigatorio"
+				size="15" value="#{doadorBean.doador.cpf}"
+				style="margin-left:300px; border:3px; width:218px;">
+				<f:validateRequired validatorMessage="*Campo CPF é obrigatorio" />
+			</p:inputMask>
+
+			<br />
+			<br />
+			<p:inputMask mask="99/99/9999" id="datanascimento"
+				value="#{doadorBean.doador.dtNascimento}"
+				pt:placeholder="DATA NASCIMENTO" style="border:3px;"
+				required="false"
+				validatorMessage="*Campo Data de nascimento é obrigatorio">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+				<f:validateRequired
+					validatorMessage="*Campo data de nascimento é obrigatorio" />
+			</p:inputMask>
+			<p:inputText id="email" value="#{doadorBean.doador.email}" size="8"
+				pt:placeholder="EMAIL"
+				style=" margin-left: 300px;border: 3px;width:218px;">
+			</p:inputText>
+			<br />
+			<br />
+			<p:selectOneMenu id="sexo" value="#{doadorBean.doador.sexo}"
+				style="width:190px; border: 3px;" required="false" size="4"
+				validatorMessage="*Campo sexo é obrigatorio">
+				<f:selectItem itemLabel="*SEXO" itemValue="null" />
+				<f:selectItem itemLabel="M" itemValue="M"
+					action="#{doadorBean.doador.sexo}" />
+				<f:selectItem itemLabel="F" itemValue="F"
+					action="#{doadorBean.doador.sexo}" />
+				<f:validateRequired validatorMessage="*Campo sexo é obrigatorio" />
+			</p:selectOneMenu>
+			<p:inputMask mask="(99)9999-9999" id="telefone"
+				value="#{doadorBean.doador.telDoador}" pt:placeholder="TELEFONE"
+				style="margin-left:300px; border: 3px; width:218px;" />
+			<br />
+			<br />
+			<p:inputMask mask="(99)9999-9999" id="celular"
+				value="#{doadorBean.doador.celDoador}" pt:placeholder="CELULAR"
+				style="border:5px;" />
+			<p:selectOneMenu id="estado"
+				value="#{doadorBean.doador.estadoDoador}"
+				style="width:190px; border:3px;margin-left:300px;width:218px; "
+				required="false" validatorMessage="*Campo Estado é obrigatorio"
+				size="4">
+				<f:selectItem itemLabel="*ESTADO" itemValue="null" />
+				<f:selectItem itemLabel="PR" itemValue="PR"
+					action="#{doadorBean.doador.estadoDoador}" />
+				<f:validateRequired validatorMessage="*Campo estado é obrigatorio" />
+			</p:selectOneMenu>
+			<br />
+			<br />
+			<p:selectOneMenu id="cidade"
+				value="#{doadorBean.doador.cidadeDoador}"
+				style="width:190px; border: 3px;" required="false"
+				validatorMessage="*Campo Cidade é obrigatorio" size="15">
+				<f:selectItem itemLabel="*CIDADE" itemValue="null" />
+				<f:selectItem itemLabel="CURITIBA" itemValue="CURITIBA"
+					action="#{doadorBean.doador.cidadeDoador}" />
+				<f:validateRequired validatorMessage="*Campo cidade é obrigatorio" />
+			</p:selectOneMenu>
+			<p:inputText id="bairro" value="#{doadorBean.doador.bairro}"
+				pt:placeholder="*BAIRRO"
+				style="margin-left:300px;border:5px; width:218px;" required="false"
+				validatorMessage="*Campo Bairro é obrigatorio" size="50">
+				<f:validateRequired validatorMessage="*Campo bairro é obrigatorio" />
+
+			</p:inputText>
+
+			<br />
+			<br />
+			<p:inputText id="endereco"
+				value="#{doadorBean.doador.enderecoDoador}"
+				pt:placeholder="*ENDEREÇO" style="border:5px; width:218px;"
+				required="false" validatorMessage="*Campo Endereço é obrigatorio"
+				size="90">
+				<f:validateRequired validatorMessage="*Campo endereço é obrigatorio" />
+			</p:inputText>
+			<p:inputMask mask="99.999-999" id="cep"
+				value="#{doadorBean.doador.cep}" pt:placeholder="*CEP"
+				style="margin-left:300px;border:5px; width:218px;" required="false"
+				validatorMessage="*Cep é necessario" size="30">
+				<f:validateRequired validatorMessage="*Campo Cep é obrigatorio" />
+			</p:inputMask>
+			<br />
+			<br />
+			<p:selectOneMenu id="tpsangue"
+				value="#{doadorBean.doador.tipoSangue}"
+				style="width:190px;border:5px;width:190px;" required="false"
+				validatorMessage="*Campo Tipo sangue é obrigatorio" size="6">
+				<f:selectItem itemLabel="TIPO SANGUE" itemValue="null" />
+				<f:selectItem itemLabel="A+" itemValue="A+"
+					action="#{doadorBean.doador.tipoSangue}" />
+				<f:selectItem itemLabel="A-" itemValue="A-"
+					action="#{doadorBean.doador.tipoSangue}" />
+				<f:selectItem itemLabel="B+" itemValue="B+"
+					action="#{doadorBean.doador.tipoSangue}" />
+					<f:selectItem itemLabel="B-" itemValue="B-"
+					action="#{doadorBean.doador.tipoSangue}" />
+					<f:selectItem itemLabel="AB+" itemValue="AB+"
+					action="#{doadorBean.doador.tipoSangue}" />
+					<f:selectItem itemLabel="AB-" itemValue="AB-"
+					action="#{doadorBean.doador.tipoSangue}" />
+					<f:selectItem itemLabel="O-" itemValue="O-"
+					action="#{doadorBean.doador.tipoSangue}" />
+					<f:selectItem itemLabel="O+" itemValue="O+"
+					action="#{doadorBean.doador.tipoSangue}" />
+					
+				<f:validateRequired validatorMessage="*Campo sangue é obrigatorio" />
+			</p:selectOneMenu>
+			<p:password id="senha" value="#{doadorBean.doador.senhaDoador}"
+				pt:placeholder="SENHA"
+				style="margin-left:300px;border:5px;width:218px;" required="false"
+				validatorMessage="*Campo Senha é obrigatorio" size="10">
+				<f:validateRequired validatorMessage="*Campo senha é obrigatorio" />
+			</p:password>
+			<br />
+			<br />
+			<p:commandButton action="#{doadorBean.cadastrarDoador()}"
+				value="CADASTRAR" disable="#{doadorBean.statusCadastrar}"
+				required="False" style="border:5px;">
+			</p:commandButton>
+			
+			<p:button href="/View/HomePage.jsf" value="INICIO"
+				style="border:5px;margin-left:15px;" />
+			<p:button href="/View/Pages/CadastrarDoadores.jsf" value="LIMPAR"
+				style="border:5px;margin-left:15px;" />
+			<p:button href="/View/Pages/LoginDoador.jsf" value="ENTRAR"
+				style="border:5px;margin-left:15px;" />
+
+
+		</p:panelGrid>
+	</h:form>
+	<script type="text/javascript">
+	function mascara(o,f){
+		v_obj=o
+		v_fun=f
+		setTimeout("execmascara()",1)
+		}
+		function execmascara(){
+		v_obj.value=v_fun(v_obj.value)
+		}
+		function soLetras(v){
+		return v.replace(/\d/g,"") //Remove tudo o que não é Letra
+		}
+		function soLetrasMA(v){
+		v=v.toUpperCase() //Maiúsculas
+		return v.replace(/\d/g,"") //Remove tudo o que não é Letra ->maiusculas
+		}
+		function soLetrasMI(v){
+		v=v.toLowerCase() //Minusculas
+		return v.replace(/\d/g,"") //Remove tudo o que não é Letra ->minusculas
+		}
+		function soNumeros(v){
+		return v.replace(/\D/g,"") //Remove tudo o que não é dígito
+		}
+	</script>
+
+
+</body>
+
+</html>

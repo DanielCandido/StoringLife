@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Login Hospital</title>
+</h:head>
+<body bgcolor="white">
+
+	<div style="text-align: center;">
+		<h:outputLabel value="Storing Life"
+			style="font-size:50px; min-width:5000px;min-height:2000px ;
+			border: 5px inset;" />
+			<p:messages id="messages" showDetail="false" autoUpdate="true"
+			closable="true" />
+		<h:form>	
+		<br /> <br />
+		<p:inputMask mask="99.999.999/9999-99" value="#{doadorBean.cnpjLogin}" pt:placeholder="CNPJ" 
+		required="false" validatorMessage="CNPJ INVALIDO"/>
+		<br/>
+		<br/>
+		<p:password value="#{doadorBean.senhaHospLogin}" pt:placeholder="SENHA"
+		required="false" requiredMessage="SENHA INVALIDA" />
+		<br/>
+		
+		<p:commandLink action="CadastrarHospitais" value="Cadastre-se" />
+		<br/><br/>
+		<p:commandButton action="#{doadorBean.fazerLoginHosp()}" value="Entrar" />
+		</h:form>
+	</div>
+</body>
+</html>
